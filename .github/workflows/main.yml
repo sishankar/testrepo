@@ -13,10 +13,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: npm install --production
-        shell: bash   # 👈 force bash
+        run: npm install 
 
       - name: Restart app with PM2
         run: |
-          pm2 restart nodeapp || pm2 start app.js --name nodeapp
-        shell: bash   # 👈 force bash
+          pm2 start app.js --name nodeapp
