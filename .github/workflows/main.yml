@@ -6,14 +6,17 @@ on:
 
 jobs:
   deploy:
-    runs-on: mine   # 👈 important, matches your runner’s label
+    runs-on: mine
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm install --production
+        shell: bash   # 👈 force bash
 
       - name: Restart app with PM2
         run: |
           pm2 restart nodeapp || pm2 start app.js --name nodeapp
+        shell: bash   # 👈 force bash
